@@ -1,97 +1,76 @@
 {
-  "name": "wx-smart-file",
-  "displayName": "wx-smart-file",
-  "description": "vscode 自动生成小程序文件插件",
-  "keywords": [
-    "vscdoe",
-    "plugin",
-    "miniprogram",
-    "wxml",
-    "wxss"
-  ],
-  "version": "1.0.8",
-  "publisher": "haodaima",
-  "engines": {
-    "vscode": "^1.25.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "icon": "logo.png",
-  "activationEvents": [
-    "onCommand:wxSmartFile.init",
-    "onCommand:wxSmartFile.stop",
-    "onCommand:wxSmartFile.debugPage"
-  ],
-  "main": "./src/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "wxSmartFile.init",
-        "title": "Go Start",
-        "category": "wxSmartFile"
-      },
-      {
-        "command": "wxSmartFile.stop",
-        "title": "Stop",
-        "category": "wxSmartFile"
-      },
-      {
-        "command": "wxSmartFile.debugPage",
-        "title": "调试该页面",
-        "category": "wxSmartFile"
-      }
+    "name": "stupid-creator",
+    "displayName": "stupid-creator",
+    "description": "stupid-creator",
+    "keywords": [
+        "vscdoe",
+        "plugin",
+        "file",
+        "fileCreator"
     ],
-    "configuration": {
-      "type": "obeject",
-      "title": "plugin wx-smart-file config",
-      "properties": {
-        "wxSmartFile.enabled": {
-          "type": "boolean",
-          "default": true,
-          "description": "插件是否启用"
-        },
-        "wxSmartFile.path": {
-          "type": "string",
-          "default": "pages",
-          "description": "默认监听的文件夹"
-        },
-        "wxSmartFile.templateDir": {
-          "type": "string",
-          "description": "模板存放的文件夹, 模板文件名必须以 template 开头，例如 template.wxss, template.wxml"
-        },
-        "wxSmartFile.filename": {
-          "type": "string",
-          "description": "自动生成文件的文件名"
-        }
-      }
+    "version": "1.0.0",
+    "publisher": "haoxj",
+    "engines": {
+        "vscode": "^1.25.0"
     },
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "wxSmartFile.debugPage",
-          "group": "z_commands"
+    "categories": [
+        "Other"
+    ],
+    "icon": "logo.png",
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./src/extension.js",
+    "contributes": {
+        "commands": [{
+            "command": "StupidCreator.stop",
+            "title": "Stop",
+            "category": "StupidCreator"
+        }],
+        "configuration": {
+            "type": "obeject",
+            "title": "plugin stupid-creator config",
+            "properties": {
+                "StupidCreator.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "插件是否启用"
+                },
+                "StupidCreator.path": {
+                    "type": "string",
+                    "default": "src/pages",
+                    "description": "默认监听的文件夹"
+                },
+                "StupidCreator.templateDir": {
+                    "type": "string",
+                    "description": "模板存放的文件夹",
+                    "default": "Template"
+                },
+                "StupidCreator.projectWhiteList": {
+                    "type": "array",
+                    "description": "自动生成文件的项目白名单",
+                    "default": []
+                }
+            }
         }
-      ]
-    }
-  },
-  "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "typescript": "^3.1.4",
-    "vscode": "^1.1.25",
-    "eslint": "^4.11.0",
-    "@types/node": "^8.10.25",
-    "@types/mocha": "^2.2.42"
-  },
-  "dependencies": {
-    "typescript-compiler": "^1.4.1-2"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "homepage": "https://github.com/haoxinjieFE/vscode-extension-wxSmartFile"
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^3.1.4",
+        "vscode": "^1.1.25",
+        "eslint": "^4.11.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "typescript-compiler": "^1.4.1-2"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "homepage": "https://github.com/haoxinjieFE/vscode-extension-wxSmartFile"
 }
