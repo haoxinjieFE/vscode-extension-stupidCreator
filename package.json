@@ -8,7 +8,7 @@
         "file",
         "fileCreator"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "haoxj",
     "engines": {
         "vscode": "^1.25.0"
@@ -23,10 +23,16 @@
     "main": "./src/extension.js",
     "contributes": {
         "commands": [{
-            "command": "StupidCreator.stop",
-            "title": "Stop",
-            "category": "StupidCreator"
-        }],
+                "command": "StupidCreator.start",
+                "title": "Start",
+                "category": "StupidCreator"
+            },
+            {
+                "command": "StupidCreator.stop",
+                "title": "Stop",
+                "category": "StupidCreator"
+            }
+        ],
         "configuration": {
             "type": "obeject",
             "title": "plugin stupid-creator config",

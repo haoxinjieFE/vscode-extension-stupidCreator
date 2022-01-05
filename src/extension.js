@@ -21,6 +21,13 @@ function activate(context) {
             );
         })
     );
+    vscode.commands.registerCommand("StupidCreator.start", () => {
+        try {
+            StupidCreator.init()
+        } catch (e) {
+            console.log(e);
+        }
+    })
     context.subscriptions.push(StupidCreator.fileWatch());
     context.subscriptions.push(StupidCreator.watch());
 }
