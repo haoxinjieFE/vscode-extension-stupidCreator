@@ -59,19 +59,7 @@ class StupidCreator {
                             } catch (e) {
                                 console.log(e);
                             }
-                        });
-                        if (templateDir) {
-                            const templatePath = `${projectPath}/${templateDir}`;
-                            fs.exists(templatePath, exists => {
-                                if (!exists) {
-                                    fs.mkdir(templatePath, {}, err => {
-                                        if (err) {
-                                            console.log(err);
-                                        }
-                                    });
-                                }
-                            });
-                        }
+                        })
                     }
                 });
             } else if (typeof enabled !== "boolean" && !enabled) {
@@ -147,8 +135,12 @@ class StupidCreator {
             files.forEach(file => {
                 const fileData = fs.readFileSync(`${TemplateDirPath}/${file}`)
                 if (fileData) {
-                    fs.writeFile(`${path}/${file}`, fileData, err => {
-                        console.log(err);
+                    fs.access(`${path}/${file}`, fs.constants.F_OK, err => {
+                        if (err) {
+                            fs.writeFile(`${path}/${file}`, fileData, err => {
+                                console.log(err);
+                            })
+                        }
                     })
                 }
 

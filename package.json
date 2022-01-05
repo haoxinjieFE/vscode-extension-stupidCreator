@@ -8,7 +8,7 @@
         "file",
         "fileCreator"
     ],
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "haoxj",
     "engines": {
         "vscode": "^1.25.0"
@@ -31,6 +31,19 @@
                 "command": "StupidCreator.stop",
                 "title": "Stop",
                 "category": "StupidCreator"
+            }
+        ],
+        "keybindings": [{
+                "command": "StupidCreator.start",
+                "key": "ctrl+r",
+                "mac": "Cmd+r",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "StupidCreator.stop",
+                "key": "ctrl+t",
+                "mac": "Cmd+t",
+                "when": "editorTextFocus"
             }
         ],
         "configuration": {
