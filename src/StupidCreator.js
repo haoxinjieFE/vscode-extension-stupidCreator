@@ -14,7 +14,6 @@ class StupidCreator {
             const projectPath = workspace.workspaceFolders[0].uri.path
 
             const { enabled, path, templateDir, projectWhiteList } = this.getConfiguration();
-            console.log('%c 🍍 projectWhiteList: ', 'font-size:20px;background-color: #B03734;color:#fff;', projectWhiteList);
             const { createFileSystemWatcher } = workspace;
             if (this.fileWatcher) {
                 this.fileWatcher.dispose();
@@ -32,8 +31,8 @@ class StupidCreator {
             }
             if (enabled && path) {
                 const realPath = `${projectPath}/${path}`;
-                fs.exists(realPath, exists => {
-                    if (!exists) {
+                fs.access(realPath, fs.constants.F_OK, err => {
+                    if (err) {
                         showErrorMessage(`未找到 ${path} 文件夹, 请修改 path 字段后重试`);
                     } else {
                         showInformationMessage("StupidCreator 已经运行在您的 vscode 上");
@@ -141,7 +140,7 @@ class StupidCreator {
                 const fileData = fs.readFileSync(`${TemplateDirPath}/${file}`)
                 if (fileData) {
                     fs.writeFile(`${path}/${file}`, fileData, err => {
-                        console.log('%c 🌯 err: ', 'font-size:20px;background-color: #ED9EC7;color:#fff;', err);
+                        console.log(err);
                     })
                 }
 
