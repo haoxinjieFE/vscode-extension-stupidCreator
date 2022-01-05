@@ -8,7 +8,7 @@
         "file",
         "fileCreator"
     ],
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "haoxj",
     "engines": {
         "vscode": "^1.25.0"
@@ -56,6 +56,14 @@
                     "type": "array",
                     "description": "自动生成文件的项目白名单",
                     "default": []
+                },
+                "StupidCreator.ignoreNames": {
+                    "type": "array",
+                    "description": "需要忽略的文件夹名称",
+                    "default": [
+                        "components",
+                        "utils/*"
+                    ]
                 }
             }
         }

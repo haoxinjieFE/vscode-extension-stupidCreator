@@ -13,7 +13,7 @@ class StupidCreator {
         try {
             const projectPath = workspace.workspaceFolders[0].uri.path
 
-            const { enabled, path, templateDir, projectWhiteList } = this.getConfiguration();
+            const { enabled, path, templateDir, projectWhiteList, ignoreNames } = this.getConfiguration();
             const { createFileSystemWatcher } = workspace;
             if (this.fileWatcher) {
                 this.fileWatcher.dispose();
@@ -45,7 +45,15 @@ class StupidCreator {
 
                         this.fileWatcher = wathDirCreated.onDidCreate(url => {
                             try {
-                                if (url.path.indexOf(".") <= -1) {
+                                const isIgnoreDir = ignoreNames.some(name => {
+                                    const isAllIgnore = name.includes('/*');
+                                    if (isAllIgnore) {
+                                        const realName = name.replace('/*', '')
+                                        return url.path.includes(realName)
+                                    }
+                                    return url.path.endsWith(name)
+                                });
+                                if (url.path.indexOf(".") <= -1 && !isIgnoreDir) {
                                     this.writeWxFile(url.path);
                                 }
                             } catch (e) {

@@ -3,3 +3,6 @@
 
 ## v1.0.1
 - 支持 start 指令。
+
+## v1.0.2
+- 支持 ignoreNames 配置, 忽略指定文件夹名称，默认值 ["components", "utils/*"]。
